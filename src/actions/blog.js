@@ -154,7 +154,7 @@ export async function getBlogPostsAction() {
       category: post.category,
       createdAt: post.createdAt.toISOString(),
     }));
-
+    console.log('arcjet allowed posts', serializedPosts);
     return {
       success: true,
       posts: serializedPosts,
