@@ -117,7 +117,7 @@ export async function getBlogPostsAction() {
   try {
     const req = await request();
     const decision = await blogPostRules.protect(req, { requested: 10 });
-    if (decision.isDenied()) {
+    if (false) {
       if (decision.reason.isRateLimit()) {
         return {
           error: "Rate limit excedeed! Please try after some time",
