@@ -137,8 +137,12 @@ export async function getBlogPostsAction() {
     }
 
     console.log(decision, "decision123");
-
-    await connectToDatabase();
+    try{
+      await connectToDatabase();
+    } catch(e) {
+      console.log(e);
+    }
+    
 
     const posts = await BlogPost.find({})
       .sort({ createdAt: -1 })
@@ -161,7 +165,7 @@ export async function getBlogPostsAction() {
     };
   } catch (e) {
     return {
-      error: "Failed to fetch the blogs! Please try again",
+      error: `Failed to fetch the blogs! Please try again ${e}`,
     };
   }
 }
